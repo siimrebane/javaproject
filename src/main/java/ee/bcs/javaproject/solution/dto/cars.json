@@ -1,0 +1,38 @@
+{
+  "clients": [
+    {
+      "name": "John",
+      "address": "USA",
+      "cars": [
+        {
+          "regNr": "123ABC",
+          "color": "black"
+        },
+        {
+          "regNr": "124ABC",
+          "color": "white"
+        }
+      ]
+    },
+    {
+      "name": "John",
+      "address": "USA",
+      "cars": [
+        {
+          "regNr": "123ABC",
+          "color": "black"
+        }
+      ]
+    },
+    {
+      "name": "John",
+      "address": "USA",
+      "cars": [
+        {
+          "regNr": "123ABC",
+          "color": "black"
+        }
+      ]
+    }
+  ]
+}
