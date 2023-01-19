@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd
+      http://www.liquibase.org/xml/ns/pro
+      http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.1.xsd">
+    <changeSet  author="nvoxland"  id="1">
+        <createTable tableName="person">
+            <column  name="id"  type="INTEGER">
+                <constraints  nullable="false"  primaryKey="true"  unique="true"/>
+            </column>
+            <column  name="name"  type="VARCHAR(255)" />
+        </createTable>
+    </changeSet>
+    <changeSet id="2022-01-11 Add employee table" author="Siim Rebane">
+        <createTable tableName="employee">
+            <column name="id" type="integer" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="text"/>
+            <column name="addres" type="text"/>
+            <column name="salary" type="numeric"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="2022-01-19 add account table" author="Siim Rebane">
+        <createTable tableName="account">
+            <column name="account_number" type="text">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="balance" type="decimal"/>
+            <column name="first_name" type="text"/>
+            <column name="last_name" type="text"/>
+            <column name="locked" type="boolean"/>
+        </createTable>
+        <createTable tableName="account_statement">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="from_account" type="text"/>
+            <column name="to_account" type="text"/>
+            <column name="amount" type="decimal"/>
+            <column name="timestamp" type="timestamp" defaultValue="now()"/>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
