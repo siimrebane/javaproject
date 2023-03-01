@@ -1,0 +1,28 @@
+1. Täienda tokeni genereerimist:
+
+    private String generateJwt(String userName, String role) {
+        Date now = new Date();
+        Date exp = new Date(now.getTime() + 1000*60*60);
+
+        // Olulised on 3 järgevat rida
+        Map<String, Object> claims = new HashMap<>();
+        claims.put("userName", userName);
+        claims.put("role", role);
+
+
+        return Jwts.builder()
+            .setSubject("bcs")
+            .addClaims(claims) // ja vaata, et Claimid lähevad kaasa
+            .setIssuedAt(new Date())
+            .signWith(JwtTokenProvider.key)
+            .setExpiration(exp)
+            .compact();
+    }
+
+
+2. Täienda JwtRequestFilter klassi ja muuda:
+
+    List.of(new SimpleGrantedAuthority(claims.get("role")))); // List of roles
+
+3. Kontrolleris kuhu tohib ligipääseda ainult kindlas rollis kasutaja pane meetodi definitsiooni ette
+   @PreAuthorize(hasRole('ADMIN')) // kui on ADMIN roll, kui on midagi muud siis kirjuta vastav rolli nimi
